@@ -583,7 +583,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
     @required int? index,
   }) {
     assert(index != null);
-    _inputList[index!] = replacefarsinumber( _inputList[index!]);
+    _inputList[index!] = replaceFarsiNumberToEnglish( _inputList[index!]);
     bool showObscured = !widget.blinkWhenObscuring ||
         (widget.blinkWhenObscuring && _hasBlinked) ||
         index != _inputList.where((x) => x.isNotEmpty).length - 1;
