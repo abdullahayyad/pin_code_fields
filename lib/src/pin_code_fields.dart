@@ -583,7 +583,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
     @required int? index,
   }) {
     assert(index != null);
-
+    _inputList[index!] = replacefarsinumber( _inputList[index!]);
     bool showObscured = !widget.blinkWhenObscuring ||
         (widget.blinkWhenObscuring && _hasBlinked) ||
         index != _inputList.where((x) => x.isNotEmpty).length - 1;
@@ -624,6 +624,18 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
           );
   }
 
+
+ String replaceFarsiNumberToEnglish(String input) {
+  const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  const farsi = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+  for (int i = 0; i < english.length; i++) {
+    input = input.replaceAll(farsi[i],english[i]);
+  }
+
+  return input;
+}
+  
 // selects the right fill color for the field
   Color _getFillColorFromIndex(int index) {
     if (!widget.enabled) {
